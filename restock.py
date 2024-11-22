@@ -1,4 +1,5 @@
 def restock_inventory(available_items, inventory_records, current_day):
+ 
     '''
 ***********COMPLETE THIS FUNCTION***********
 This function is responsible for updating the stock/restock for a given day.
@@ -17,5 +18,12 @@ available_items:(integer) This function returns this integer which updates the a
 
 The function will also update the inventory_records (For restocking) for a  given current day. It will also return "available_items".
     '''
-
+    if current_day % 7 == 0:
+        restocked_units = 2000 - available_items
+        available_items += restocked_units
+        inventory_records.append([current_day, 0, restocked_units, available_items])
+    else:
+        inventory_records.append([current_day, 0, 0, available_items])
+    
+   
     return available_items

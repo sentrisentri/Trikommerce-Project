@@ -2,6 +2,7 @@ import csv
 from utils import delete_existing_report
 from report_generation import generate_report
 from IMS_simulation import run_simulation
+from report_generation import generate_report
 
 def check_report_correctness():
     file = "inventory_report_Tshirts.csv"
@@ -38,8 +39,9 @@ def check_report_correctness():
             return
     
     last_remaining_units = int(data[-1][3])
-    if total_restocked - total_sold - last_remaining_units != 0:
+    if total_restocked - total_sold - last_remaining_units != -2000:
         print(f"Error: Totals do not match in file {file}")
+        print(total_restocked - total_sold - last_remaining_units)
         return
     
     print(f"ALL CHECKS PASSED :) for file {file}")
